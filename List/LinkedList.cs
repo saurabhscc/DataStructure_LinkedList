@@ -9,21 +9,24 @@ namespace List
         // variables
         internal Node head;
         /// <summary>
-        /// Add element into reverse order.
+        /// Add elements into linkedlist.
         /// </summary>
         /// <param name="data"></param>
-        internal void AddElementInReverse(int data)
+        internal void Add(int data)
         {
-            Node newNode = new Node(data);
+            Node node = new Node(data);
             if (this.head == null)
             {
-                this.head = newNode;
+                this.head = node;
             }
             else
             {
-                Node temp = this.head;
-                head = newNode;
-                head.next = temp;
+                Node temp = head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = node;
             }
         }
         /// <summary>
@@ -39,7 +42,7 @@ namespace List
             }
             while (temp != null)
             {
-                Console.WriteLine(temp.data + " ");
+                Console.Write(temp.data + "->");
                 temp = temp.next;
             }
             Console.Write("null");
