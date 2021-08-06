@@ -12,7 +12,7 @@ namespace List
             linkedList.Add(70);
             linkedList.Display();
             Console.WriteLine("*******");
-            linkedList.Pop();
+            linkedList.PopLast();
             linkedList.Display();
         }
     }
