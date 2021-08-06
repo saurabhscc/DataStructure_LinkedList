@@ -11,9 +11,6 @@ namespace List
             linkedList.Add(30);
             linkedList.Add(70);
             linkedList.Display();
-            Console.WriteLine("*******");
-            linkedList.PopLast();
-            linkedList.Display();
         }
     }
 }

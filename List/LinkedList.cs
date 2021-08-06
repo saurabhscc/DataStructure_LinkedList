@@ -4,7 +4,7 @@ using System.Text;
 
 namespace List
 {
-    class LinkedList
+    public class LinkedList
     {
         // variables
         internal Node head;
@@ -45,7 +45,70 @@ namespace List
                 Console.Write(temp.data + "->");
                 temp = temp.next;
             }
-            Console.Write("null");
+            Console.Write("null \n");
+        }
+        /// <summary>
+        /// Add element into Reverse order.
+        /// </summary>
+        /// <param name="data"></param>
+        internal void AddElementInReverse(int data)
+        {
+            Node newNode = new Node(data);
+            if (this.head == null)
+            {
+                this.head = newNode;
+            }
+            else
+            {
+                Node temp = this.head;
+                head = newNode;
+                head.next = temp;
+            }
+        }
+        /// <summary>
+        /// Insert element at specified postion in linkedlist.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        internal Node InsertAtParticularPosition(int position, int data)
+        {
+            Node newestNode = new Node(data);
+            if (this.head == null)
+            {
+                return newestNode;
+            }
+            if (position == 0)
+            {
+                newestNode.next = this.head;
+                this.head = newestNode;
+                return this.head;
+            }
+            Node prev = null;
+            Node current = this.head;
+            int count = 0;
+            while (current != null && count < position)
+            {
+                prev = current;
+                current = current.next;
+                count++;
+            }
+            newestNode.next = prev.next;
+            prev.next = newestNode;
+            return this.head;
+        }
+        /// <summary>
+        /// Remove the first element from linkedlist.
+        /// </summary>
+        /// <returns></returns>
+        internal Node Pop()
+        {
+            if (this.head == null)
+            {
+                return null;
+            }
+            this.head = this.head.next;
+            return this.head;
         }
         /// <summary>
         /// Remove the last element from linkedlist.
@@ -68,6 +131,27 @@ namespace List
             }
             NewNode.next = null;
             return head;
+        }
+        /// <summary>
+        /// Search for element in linked list.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>count</returns>
+        public int Search(int value)
+        {
+            Node node = this.head;
+            int count = 0;
+            while (node != null)
+            {
+
+                if (node.data == value)
+                {
+                    return count;
+                }
+                node = node.next;
+                count++;
+            }
+            return count;
         }
     }
 }
